@@ -6134,11 +6134,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\WebScrappingTest\\WebScrappingTest\\WebScrappingTest.csproj",
+      "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\WebTesting\\WebScrappingTest\\WebScrappingTest\\WebScrappingTest.csproj",
       "projectName": "WebScrappingTest",
-      "projectPath": "C:\\Users\\bruno\\source\\repos\\WebScrappingTest\\WebScrappingTest\\WebScrappingTest.csproj",
+      "projectPath": "C:\\Users\\bruno\\source\\repos\\WebTesting\\WebScrappingTest\\WebScrappingTest\\WebScrappingTest.csproj",
       "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bruno\\source\\repos\\WebScrappingTest\\WebScrappingTest\\obj\\",
+      "outputPath": "C:\\Users\\bruno\\source\\repos\\WebTesting\\WebScrappingTest\\WebScrappingTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

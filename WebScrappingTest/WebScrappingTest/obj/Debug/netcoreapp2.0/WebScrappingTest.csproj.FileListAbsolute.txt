@@ -9,3 +9,14 @@ C:\Users\bruno\source\repos\WebScrappingTest\WebScrappingTest\bin\Debug\netcorea
 C:\Users\bruno\source\repos\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.dll
 C:\Users\bruno\source\repos\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.pdb
 C:\Users\bruno\source\repos\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.csprojResolveAssemblyReference.cache
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.csprojResolveAssemblyReference.cache
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.csproj.CoreCompileInputs.cache
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.AssemblyInfoInputs.cache
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.AssemblyInfo.cs
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.dll
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\obj\Debug\netcoreapp2.0\WebScrappingTest.pdb
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\bin\Debug\netcoreapp2.0\WebScrappingTest.deps.json
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\bin\Debug\netcoreapp2.0\WebScrappingTest.runtimeconfig.json
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\bin\Debug\netcoreapp2.0\WebScrappingTest.runtimeconfig.dev.json
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\bin\Debug\netcoreapp2.0\WebScrappingTest.dll
+C:\Users\bruno\source\repos\WebTesting\WebScrappingTest\WebScrappingTest\bin\Debug\netcoreapp2.0\WebScrappingTest.pdb

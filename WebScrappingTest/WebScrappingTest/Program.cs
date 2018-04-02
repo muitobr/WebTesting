@@ -22,7 +22,7 @@ namespace WebScrappingTest
             Console.WriteLine("Carregando driver do Selenium para Firefox em modo headless...");
             var paginaClassificacao = new PaginaClassificacao(seleniumConfigurations);
 
-            Console.WriteLine("Carregando página com classificações da NBA...");
+            Console.WriteLine("Carregando página EDHREC...");
             paginaClassificacao.CarregarPagina();
 
             Console.WriteLine("Extraindo dados...");

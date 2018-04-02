@@ -11,14 +11,14 @@ namespace WebScrappingTest
 
         public ClassificacaoRepository(IConfiguration configuration)
         {
-            _client = new MongoClient(configuration.GetConnectionString("BaseNBA"));
-            _db = _client.GetDatabase("NBA");
+            _client = new MongoClient(configuration.GetConnectionString("BancoDeDados"));
+            _db = _client.GetDatabase("EDHREC");
         }
 
-        public void Incluir(List<Conferencia> conferencias)
+        public void Incluir(List<Commander> conferencias)
         {
-            _db.DropCollection("Classificacao");
-            var classificacaoNBA = _db.GetCollection<Conferencia>("Classificacao");
+            _db.DropCollection("Commander");
+            var classificacaoNBA = _db.GetCollection<Commander>("Commander");
             classificacaoNBA.InsertMany(conferencias);
         }
     }

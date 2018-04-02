@@ -23,49 +23,56 @@ namespace WebScrappingTest
         public void CarregarPagina()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_configurations.Timeout);
-            _driver.Navigate().GoToUrl(_configurations.UrlPaginaClassificacaoNBA);
+           _driver.Navigate().GoToUrl(_configurations.UrlPaginaClassificacaoNBA);
         }
 
-        public List<Conferencia> ObterClassificacao()
+        public List<Commander> ObterClassificacao()
         {
             DateTime dataCarga = DateTime.Now;
-            List<Conferencia> conferencias = new List<Conferencia>();
+            List<Commander> baralho = new List<Commander>();
 
-            string temporada = _driver
-                .FindElement(By.ClassName("automated-header"))
-                .FindElement(By.TagName("h1"))
-                .Text.Split(new char[] { ' ' }).Last();
+            string nomeComandante = _driver.FindElement(By.CssSelector("h3.panel-title")).Text;
 
-            var dadosConferencias = _driver.FindElements(By.ClassName("responsive-table-wrap"));
-            var captions = _driver.FindElements(By.ClassName("table-caption"));
+            var dadosConferencias = _driver.FindElements(By.ClassName("cards"));
+            var captions = _driver.FindElements(By.ClassName("card"));
 
             for (int i = 0; i < captions.Count; i++)
             {
                 var caption = captions[i];
-                Conferencia conferencia = new Conferencia();
-                conferencia.Temporada = temporada;
-                conferencia.DataCarga = dataCarga;
-                conferencia.Nome = caption.FindElement(By.ClassName("long-caption")).Text;
-                conferencias.Add(conferencia);
+                Commander cartasCommander = new Commander();
+                cartasCommander.Comandante = nomeComandante;
+                cartasCommander.DataCarga = dataCarga;
+                cartasCommander.Nome = nomeComandante;
+                baralho.Add(cartasCommander);
 
                 int posicao = 0;
                 var conf = dadosConferencias[i];
-                var dadosEquipes = conf.FindElement(By.TagName("tbody")).FindElements(By.TagName("tr"));
-                foreach (var dadosEquipe in dadosEquipes)
+                var dadosCartas = conf.FindElements(By.CssSelector("div.nwname"));
+                foreach (var dadosCarta in dadosCartas)
                 {
-                    var estatisticasEquipe =  dadosEquipe.FindElements(By.TagName("td"));
+                    var estatisticasEquipe = conf.FindElements(By.CssSelector("div.nwdesc.ellipsis"));
                     posicao++;
-                    Equipe equipe = new Equipe();
-                    equipe.Posicao = posicao;
-                    equipe.Nome = estatisticasEquipe[0].FindElement(By.ClassName("team-names")).GetAttribute("innerHTML");
-                    equipe.Vitorias = Convert.ToInt32(estatisticasEquipe[1].Text);
-                    equipe.Derrotas = Convert.ToInt32(estatisticasEquipe[2].Text);
-                    equipe.PercentualVitorias = estatisticasEquipe[3].Text;
-                    conferencia.Equipes.Add(equipe);
-                }
+                    Cartas carta = new Cartas();
+                    carta.Posicao = posicao;
+                    carta.Nome = dadosCartas[posicao].Text;
+                    try
+                    {
+                        Console.WriteLine($"Extraindo {carta.Nome} da posicao {posicao}");
+                        carta.percentualDecksSinergia = estatisticasEquipe[posicao].Text;
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        cartasCommander.Cards.Add(carta);
+                    }
+
+                   }
             }
 
-            return conferencias;
+            return baralho;
         }
 
         public void Fechar()

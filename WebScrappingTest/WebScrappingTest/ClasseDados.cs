@@ -4,21 +4,21 @@ using MongoDB.Bson;
 
 namespace WebScrappingTest
 {
-    public class Conferencia
+    public class Commander
     {
         public ObjectId _id { get; set; }
-        public string Temporada { get; set; }
+        public string Comandante { get; set; }
         public string Nome { get; set; }
         public DateTime DataCarga { get; set; }
-        public List<Equipe> Equipes { get; set; } = new List<Equipe>();
+        public List<Cartas> Cards { get; set; } = new List<Cartas>();
     }
 
-    public class Equipe
+    public class Cartas
     {
         public int Posicao { get; set; }
         public string Nome { get; set; }
-        public int Vitorias { get; set; }
-        public int Derrotas { get; set; }
-        public string PercentualVitorias { get; set; }
+        public string percentualDecksSinergia { get; set; }
+        //public string percentualSinergia { get; set; }
+        //public string PercentualVitorias { get; set; }
     }
 }
