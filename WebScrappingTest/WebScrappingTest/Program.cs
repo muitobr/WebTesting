@@ -20,14 +20,14 @@ namespace WebScrappingTest
                 configuration.GetSection("SeleniumConfigurations")).Configure(seleniumConfigurations);
 
             Console.WriteLine("Carregando driver do Selenium para Firefox em modo headless...");
-            var paginaClassificacao = new ObterPagina(seleniumConfigurations);
+            var obterListaDeCartas = new ObterPagina(seleniumConfigurations);
 
             Console.WriteLine("Carregando página EDHREC...");
-            paginaClassificacao.CarregarPagina();
+            obterListaDeCartas.CarregarPagina();
 
             Console.WriteLine("Extraindo dados...");
-            var classificacao = paginaClassificacao.ObterDeckList();
-            paginaClassificacao.Fechar();
+            var classificacao = obterListaDeCartas.ObterDeckList();
+            obterListaDeCartas.Fechar();
 
             Console.WriteLine("Gravando dados extraídos...");
             new ClassificacaoRepository(configuration).Incluir(classificacao);
