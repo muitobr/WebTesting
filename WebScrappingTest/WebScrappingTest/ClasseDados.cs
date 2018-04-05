@@ -8,7 +8,6 @@ namespace WebScrappingTest
     {
         public ObjectId _id { get; set; }
         public string Comandante { get; set; }
-        public string Nome { get; set; }
         public DateTime DataCarga { get; set; }
         public List<Cartas> Cards { get; set; } = new List<Cartas>();
     }
@@ -17,8 +16,7 @@ namespace WebScrappingTest
     {
         public int Posicao { get; set; }
         public string Nome { get; set; }
-        public string percentualDecksSinergia { get; set; }
-        //public string percentualSinergia { get; set; }
-        //public string PercentualVitorias { get; set; }
+        public string percentualDecks { get; set; }
+        public string percentualSinergia { get; set; }
     }
 }

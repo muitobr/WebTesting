@@ -6,12 +6,12 @@ using OpenQA.Selenium.Firefox;
 
 namespace WebScrappingTest
 {
-    public class PaginaClassificacao
+    public class ObterPagina
     {
         private SeleniumConfigurations _configurations;
         private IWebDriver _driver;
 
-        public PaginaClassificacao(SeleniumConfigurations configurations)
+        public ObterPagina(SeleniumConfigurations configurations)
         {
             _configurations = configurations;
 
@@ -23,56 +23,48 @@ namespace WebScrappingTest
         public void CarregarPagina()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_configurations.Timeout);
-           _driver.Navigate().GoToUrl(_configurations.UrlPaginaClassificacaoNBA);
+            _driver.Navigate().GoToUrl(_configurations.UrlPaginaClassificacaoNBA);
         }
 
-        public List<Commander> ObterClassificacao()
+        public List<Commander> ObterDeckList()
         {
             DateTime dataCarga = DateTime.Now;
-            List<Commander> baralho = new List<Commander>();
-
+            List<Commander> Deck = new List<Commander>();
             string nomeComandante = _driver.FindElement(By.CssSelector("h3.panel-title")).Text;
-
             var dadosConferencias = _driver.FindElements(By.ClassName("cards"));
-            var captions = _driver.FindElements(By.ClassName("card"));
+            var captions = _driver.FindElements(By.ClassName("nwname"));
 
-            for (int i = 0; i < captions.Count; i++)
+            Commander cartasCommander = new Commander();
+            cartasCommander.Comandante = nomeComandante;
+            cartasCommander.DataCarga = dataCarga;
+            Deck.Add(cartasCommander);
+            Console.WriteLine($"Extraindo {nomeComandante} dia {dataCarga}");
+
+            int posicao = 0;
+            var dadosCartas = _driver.FindElements(By.CssSelector("div.nwname"));
+            foreach (var dadosCarta in dadosCartas)
             {
-                var caption = captions[i];
-                Commander cartasCommander = new Commander();
-                cartasCommander.Comandante = nomeComandante;
-                cartasCommander.DataCarga = dataCarga;
-                cartasCommander.Nome = nomeComandante;
-                baralho.Add(cartasCommander);
-
-                int posicao = 0;
-                var conf = dadosConferencias[i];
-                var dadosCartas = conf.FindElements(By.CssSelector("div.nwname"));
-                foreach (var dadosCarta in dadosCartas)
+                var estatisticasCarta = _driver.FindElements(By.CssSelector("div.nwdesc.ellipsis"));
+                Cartas carta = new Cartas();
+                carta.Posicao = posicao;
+                carta.Nome = dadosCartas[posicao].Text;
+                Console.WriteLine($"Extraindo {carta.Nome} da posicao {posicao}");
+                string percentualDecksSinergia = estatisticasCarta[posicao].Text;
+                if (percentualDecksSinergia.Contains("\r\n"))
                 {
-                    var estatisticasEquipe = conf.FindElements(By.CssSelector("div.nwdesc.ellipsis"));
-                    posicao++;
-                    Cartas carta = new Cartas();
-                    carta.Posicao = posicao;
-                    carta.Nome = dadosCartas[posicao].Text;
-                    try
-                    {
-                        Console.WriteLine($"Extraindo {carta.Nome} da posicao {posicao}");
-                        carta.percentualDecksSinergia = estatisticasEquipe[posicao].Text;
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        throw;
-                    }
-                    finally
-                    {
-                        cartasCommander.Cards.Add(carta);
-                    }
-
-                   }
+                    string[] values = percentualDecksSinergia.Split("\r\n");
+                    carta.percentualDecks = values[0].ToString();
+                    carta.percentualSinergia = values[1].ToString();
+                }
+                else
+                {
+                    carta.percentualDecks = percentualDecksSinergia;
+                    carta.percentualDecks = percentualDecksSinergia;
+                }
+                cartasCommander.Cards.Add(carta);
+                posicao++;
             }
-
-            return baralho;
+            return Deck;
         }
 
         public void Fechar()
