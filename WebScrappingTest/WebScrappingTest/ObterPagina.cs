@@ -23,7 +23,7 @@ namespace WebScrappingTest
         public void CarregarPagina()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_configurations.Timeout);
-            _driver.Navigate().GoToUrl(_configurations.UrlPaginaClassificacaoNBA);
+            _driver.Navigate().GoToUrl(_configurations.UrlPagina);
         }
 
         public List<Commander> ObterDeckList()

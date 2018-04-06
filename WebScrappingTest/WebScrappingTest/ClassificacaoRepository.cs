@@ -18,8 +18,8 @@ namespace WebScrappingTest
         public void Incluir(List<Commander> conferencias)
         {
             _db.DropCollection("Commander");
-            var classificacaoNBA = _db.GetCollection<Commander>("Commander");
-            classificacaoNBA.InsertMany(conferencias);
+            var deckList = _db.GetCollection<Commander>("Commander");
+            deckList.InsertMany(conferencias);
         }
     }
 }
