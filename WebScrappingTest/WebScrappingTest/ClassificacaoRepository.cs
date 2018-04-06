@@ -15,11 +15,11 @@ namespace WebScrappingTest
             _db = _client.GetDatabase("EDHREC");
         }
 
-        public void Incluir(List<Commander> conferencias)
+        public void Incluir(List<Commander> cards)
         {
             _db.DropCollection("Commander");
             var deckList = _db.GetCollection<Commander>("Commander");
-            deckList.InsertMany(conferencias);
+            deckList.InsertMany(cards);
         }
     }
 }
