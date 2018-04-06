@@ -4,12 +4,12 @@ using MongoDB.Driver;
 
 namespace WebScrappingTest
 {
-    public class ClassificacaoRepository
+    public class CommanderRepository
     {
         private MongoClient _client;
         private IMongoDatabase _db;
 
-        public ClassificacaoRepository(IConfiguration configuration)
+        public CommanderRepository(IConfiguration configuration)
         {
             _client = new MongoClient(configuration.GetConnectionString("BancoDeDados"));
             _db = _client.GetDatabase("EDHREC");

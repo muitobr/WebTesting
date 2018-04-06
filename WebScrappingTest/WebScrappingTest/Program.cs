@@ -30,7 +30,7 @@ namespace WebScrappingTest
             obterListaDeCartas.Fechar();
 
             Console.WriteLine("Gravando dados extraídos...");
-            new ClassificacaoRepository(configuration).Incluir(classificacao);
+            new CommanderRepository(configuration).Incluir(classificacao);
             Console.WriteLine("Carga de dados concluída com sucesso!");
 
             Console.ReadKey();
