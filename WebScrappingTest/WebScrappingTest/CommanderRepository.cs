@@ -17,7 +17,6 @@ namespace WebScrappingTest
 
         public void Incluir(List<Commander> cards)
         {
-            _db.DropCollection("Commander");
             var deckList = _db.GetCollection<Commander>("Commander");
             deckList.InsertMany(cards);
         }

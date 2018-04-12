@@ -38,7 +38,7 @@ namespace WebScrappingTest
             cartasCommander.Comandante = nomeComandante;
             cartasCommander.DataCarga = dataCarga;
             Deck.Add(cartasCommander);
-            Console.WriteLine($"Extraindo {nomeComandante} dia {dataCarga}");
+            Console.WriteLine($"Extraindo: {nomeComandante} dia: {dataCarga}");
 
             int posicao = 0;
             var dadosCartas = _driver.FindElements(By.CssSelector("div.nwname"));
