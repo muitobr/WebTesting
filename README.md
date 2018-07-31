@@ -1,3 +1,8 @@
 # WebTesting
 
-Trata-se de um projeto de WebScrapping com C# usando MongoDB.
+Trata-se de um rotina simples de WebScrapping.
+
+Técnologias usadas:
+C#;
+Selenium;
+MongoDB.
